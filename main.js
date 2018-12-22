@@ -109,7 +109,7 @@ function replaceUrls(text) {
 	return text
 }
 }
-Typer.speed=1;
+Typer.speed=2;
 Typer.file="rishab.js";
 Typer.init();
 
