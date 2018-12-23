@@ -137,15 +137,15 @@ function send() {
 		headers: {
 			"Authorization": "Bearer " + accessToken
 		},
-		data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
+		data: JSON.stringify({ query: text, lang: "en", sessionId: "clementine" }),
 		success: function(data) {
 			setResponse(JSON.stringify(data, undefined, 2));
 		},
 		error: function() {
-			setResponse("Internal Server Error");
+			setResponse("Damn it. My brain's currently outta order.");
 		}
 	});
-	setResponse("Loading...");
+	// setResponse("Loading...");
 }
 
 function setResponse(val) {
