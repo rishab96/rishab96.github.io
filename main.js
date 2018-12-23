@@ -124,8 +124,45 @@ function t() {
 	}
 }
 
-function t2() {
+var accessToken = "ed60ec51a33e48f8b14e69cc93d3d846";
+var baseUrl = "https://api.api.ai/v1/";
 
+function send() {
+	var text = $("#input").val();
+	$.ajax({
+		type: "POST",
+		url: baseUrl + "query?v=20150910",
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		headers: {
+			"Authorization": "Bearer " + accessToken
+		},
+		data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
+		success: function(data) {
+			setResponse(JSON.stringify(data, undefined, 2));
+		},
+		error: function() {
+			setResponse("Internal Server Error");
+		}
+	});
+	setResponse("Loading...");
+}
+
+function setResponse(val) {
+	    Typer.text += "<br/> <br/> <span id = \"c\">" + input.value + "</span>";
+	    Typer.speed = 50;
+	    t();
+	    Typer.text += "<br/>" + val;
+	    //console.log(Typer.text);
+	    Typer.speed = 2;
+	    //Typer.addText({"keyCode": 123748});
+
+	    document.getElementById("input").value = "> ";
+
+	    timer = setInterval("t();", 30);
+
+}
+function t2() {
       var input = document.createElement("input");
       var newline = document.createElement("br");
       input.type = "text";
@@ -134,60 +171,62 @@ function t2() {
 
       input.addEventListener("keydown", function(event) {
               if(event.keyCode == 13) {
-                    var val = input.value;
-                    val = val.toLowerCase();
-                    if (val.substring(val.length-1, val.length) == "?")
-                       val = val.slice(0, val.length-1);
-                    var split = val.split(" ");
+										event.preventDefault();
+										send();
 
-                    var done = 0;
-                    for (var i = 0; i < questions.length; i++) {
-
-                        for (var j = 0; j < questions[i].length; j++) {
-                            var check = 0;
-                            for (var k = 0; k <  questions[i][j].length; k++) {
-                                 if (split.indexOf(questions[i][j][k]) == -1) {
-                                     check = 1;
-                                     break;
-                                 }
-                             }
-                             if (check == 0) {
-                                console.log(answers[i]);
-                                //var curText = "<span id=a>Clementine</span>:<span id=b>~</span><span id=c>$</span>"
-                                var curText = " " + answers[i];
-                                Typer.text += "<br/> <br/> <span id = \"c\">" + input.value + "</span>";
-                                Typer.speed = 100;
-                                t();
-                                Typer.text += "<br/>" + curText;
-                                //console.log(Typer.text);
-                                Typer.speed = 2;
-                                //Typer.addText({"keyCode": 123748});
-
-                                document.getElementById("input").value = "> ";
-
-                                timer = setInterval("t();", 30);
-                                done = 1;
-                                break;
-                             }
-                         }
-                        if (done == 1)
-                           break;
-                     }
-
-                     if (done == 0) {
-                                var curText = "Sorry, I do not know the answer to that. Hopefully, you can find an answer in his Resume: rishab.me/resume";
-                                Typer.text += "<br/> <br/> <span id = \"c\">" + input.value + "</span>";
-                                Typer.speed = 50;
-                                t();
-                                Typer.text += "<br/>" + curText;
-                                //console.log(Typer.text);
-                                Typer.speed = 2;
-                                //Typer.addText({"keyCode": 123748});
-
-                                document.getElementById("input").value = "> ";
-
-                                timer = setInterval("t();", 30);
-                     }
+                    // val = val.toLowerCase();
+                    // if (val.substring(val.length-1, val.length) == "?")
+                    //    val = val.slice(0, val.length-1);
+                    // var split = val.split(" ");
+										//
+                    // var done = 0;
+                    // for (var i = 0; i < questions.length; i++) {
+										//
+                    //     for (var j = 0; j < questions[i].length; j++) {
+                    //         var check = 0;
+                    //         for (var k = 0; k <  questions[i][j].length; k++) {
+                    //              if (split.indexOf(questions[i][j][k]) == -1) {
+                    //                  check = 1;
+                    //                  break;
+                    //              }
+                    //          }
+                    //          if (check == 0) {
+                    //             console.log(answers[i]);
+                    //             //var curText = "<span id=a>Clementine</span>:<span id=b>~</span><span id=c>$</span>"
+                    //             var curText = " " + answers[i];
+                    //             Typer.text += "<br/> <br/> <span id = \"c\">" + input.value + "</span>";
+                    //             Typer.speed = 100;
+                    //             t();
+                    //             Typer.text += "<br/>" + curText;
+                    //             //console.log(Typer.text);
+                    //             Typer.speed = 2;
+                    //             //Typer.addText({"keyCode": 123748});
+										//
+                    //             document.getElementById("input").value = "> ";
+										//
+                    //             timer = setInterval("t();", 30);
+                    //             done = 1;
+                    //             break;
+                    //          }
+                    //      }
+                    //     if (done == 1)
+                    //        break;
+                    //  }
+										//
+                    //  if (done == 0) {
+                    //             var curText = "Sorry, I do not know the answer to that. Hopefully, you can find an answer in his Resume: rishab.me/resume";
+                    //             Typer.text += "<br/> <br/> <span id = \"c\">" + input.value + "</span>";
+                    //             Typer.speed = 50;
+                    //             t();
+                    //             Typer.text += "<br/>" + curText;
+                    //             //console.log(Typer.text);
+                    //             Typer.speed = 2;
+                    //             //Typer.addText({"keyCode": 123748});
+										//
+                    //             document.getElementById("input").value = "> ";
+										//
+                    //             timer = setInterval("t();", 30);
+                    //  }
               }
       });
 
