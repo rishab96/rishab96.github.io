@@ -1,1 +1,1 @@
-Hi there. I am Clementine. I am Rishab's personal assistant. 
+Hey it's me Clementine
