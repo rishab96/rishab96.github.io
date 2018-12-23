@@ -127,7 +127,7 @@ function t() {
 var accessToken = "ed60ec51a33e48f8b14e69cc93d3d846";
 var baseUrl = "https://api.api.ai/v1/";
 
-function send() {
+function send(input) {
 	var text = $("#input").val();
 	$.ajax({
 		type: "POST",
@@ -140,19 +140,19 @@ function send() {
 		data: JSON.stringify({ query: text, lang: "en", sessionId: "clementine" }),
 		success: function(data) {
 			//setResponse(JSON.stringify(data, undefined, 2));
-			setResponse(data.result.fulfillment.speech)
+			setResponse(data.result.fulfillment.speech, input)
 		},
 		error: function() {
-			setResponse("Damn it. My brain's currently outta order.");
+			setResponse("Damn it. My brain's currently outta order.", input);
 		}
 	});
 	// setResponse("Loading...");
 }
 
-function setResponse(val) {
-	    //Typer.text += "<br/> <br/> <span id = \"c\">" + input.value + "</span>";
-	    //Typer.speed = 50;
-	    //t();
+function setResponse(val, input) {
+	    Typer.text += "<br/> <br/> <span id = \"c\">" + input.value + "</span>";
+	    Typer.speed = 50;
+	    t();
 	    Typer.text += "<br/>" + val;
 	    //console.log(Typer.text);
 	    Typer.speed = 2;
@@ -173,7 +173,7 @@ function t2() {
       input.addEventListener("keydown", function(event) {
               if(event.keyCode == 13) {
 										event.preventDefault();
-										send();
+										send(input);
 
                     // val = val.toLowerCase();
                     // if (val.substring(val.length-1, val.length) == "?")
