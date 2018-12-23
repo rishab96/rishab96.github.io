@@ -150,9 +150,9 @@ function send() {
 }
 
 function setResponse(val) {
-	    Typer.text += "<br/> <br/> <span id = \"c\">" + input.value + "</span>";
-	    Typer.speed = 50;
-	    t();
+	    //Typer.text += "<br/> <br/> <span id = \"c\">" + input.value + "</span>";
+	    //Typer.speed = 50;
+	    //t();
 	    Typer.text += "<br/>" + val;
 	    //console.log(Typer.text);
 	    Typer.speed = 2;
