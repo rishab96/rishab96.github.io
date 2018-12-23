@@ -1,6 +1,6 @@
-Hi there. I am Clementine. I am Rishab's personal assistant.
+Hi there. I am Clementine. I am Rishab's personal assistant. Right now I am a work in progress, but I promise you, one day I'll pass the Turing test.
 
-I can answer questions about Rishab. Whenever you ask me a question about him use his name. For example:
+I can do a little bit of small talk, and I can answer questions about Rishab. Whenever you ask me a question about him use his name. For example:
 
 What does Rishab like to eat?
 What does Rishab do?
