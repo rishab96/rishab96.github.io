@@ -139,7 +139,8 @@ function send() {
 		},
 		data: JSON.stringify({ query: text, lang: "en", sessionId: "clementine" }),
 		success: function(data) {
-			setResponse(JSON.stringify(data, undefined, 2));
+			//setResponse(JSON.stringify(data, undefined, 2));
+			setResponse(data.result.fulfillment.speech)
 		},
 		error: function() {
 			setResponse("Damn it. My brain's currently outta order.");
